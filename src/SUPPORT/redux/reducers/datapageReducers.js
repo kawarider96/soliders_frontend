@@ -12,15 +12,25 @@ SET_COURSE_SKILLS,
 SET_QUALIFICATION_SKILLS,
 SET_UPDATED_SKILL,
 SET_NEW_SKILL,
-SET_SELECTED_SOLIDER } from "../actions/datapageActions";
+SET_SELECTED_SOLIDER,
+SET_PHYSICAL_STATE,
+SET_CONTACT_DATA,
+SET_RESIDENCE_DATA,
+SET_VEHICLE_CATEGORY,
+SET_DRIVE_CATEGORY } from "../actions/datapageActions";
 
 const initialState = {
  dataModul: null,
- selectedSolider: [],
+ selectedSolider: null,
  shootingSkills: [],
  missionSkills: [],
  courseSkills: [],
  qualificationSkills: [],
+ contactData: [],
+ residenceData: [],
+ vehicleCategory: [],
+ driveCategory: [],
+ physicalState: [],
  updatedSkill: null,
  newSkill: null,
 };
@@ -107,6 +117,31 @@ export default function datapageReducer(state = initialState, action) {
         return {
             ...state,
             qualificationSkills: action.payload,
+        };
+        case SET_CONTACT_DATA:
+        return {
+            ...state,
+            contactData: action.payload,
+        };
+        case SET_RESIDENCE_DATA:
+        return {
+            ...state,
+            residenceData: action.payload,
+        };
+        case SET_VEHICLE_CATEGORY:
+        return {
+            ...state,
+            vehicleCategory: action.payload,
+        };
+        case SET_DRIVE_CATEGORY:
+        return {
+            ...state,
+            driveCategory: action.payload,
+        };
+        case SET_PHYSICAL_STATE:
+        return {
+            ...state,
+            physicalState: action.payload,
         };
         case SET_UPDATED_SKILL:
         return {

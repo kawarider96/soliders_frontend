@@ -34,6 +34,11 @@ function App() {
   const missionSkills = useSelector(state => state.datapage.missionSkills);
   const courseSkills = useSelector(state => state.datapage.courseSkills);
   const qualificationSkills = useSelector(state => state.datapage.qualificationSkills);
+  const contactData = useSelector(state => state.datapage.contactData);
+  const residenceData = useSelector(state => state.datapage.residenceData);
+  const vehicleCategory = useSelector(state => state.datapage.vehicleCategory);
+  const driveCategory = useSelector(state => state.datapage.driveCategory);
+  const physicalState = useSelector(state => state.datapage.physicalState);
   const updatedSkill = useSelector(state => state.datapage.updatedSkill);
   const newSkill = useSelector(state => state.datapage.newSkill);
   //TODO: MESSAGE REDUCER
@@ -51,23 +56,13 @@ function App() {
   //TODO: STYLE REDUCER
   const style = useSelector(state => state.style.style);
   
-  
-
   useEffect(() => {
-    console.group("selectedSolider");
-    console.log("selectedSolider:", selectedSolider);
-    console.log("felhasználás:", 'datapage komponens');
-    console.log("munka:", 'ebbe mentjük el a kiválasztott katona adatait');
+    console.group("contactData");
+    console.log("contactData:", contactData);
+    console.log("felhasználás:", 'sok helyen');
+    console.log("munka:", 'kapcsolati adatok tárolása');
     console.groupEnd();
-  },[selectedSolider]);
-  
-  useEffect(() => {
-    console.group("dataModul");
-    console.log("dataModul:", dataModul);
-    console.log("felhasználás:", 'dataWindows komponens');
-    console.log("munka:", 'datapage -en lévő adatkártyáknak jelzi, hogy melyik típusú adatokat kell az adott kártyába betölteni');
-    console.groupEnd();
-  },[dataModul]);
+  },[contactData]);
   
   /*
   useEffect(() => {
@@ -158,6 +153,46 @@ function App() {
     console.groupEnd();
   },[qualificationSkills]);
 
+  useEffect(() => {
+    console.group("contactData");
+    console.log("contactData:", contactData);
+    console.log("felhasználás:", 'sok helyen');
+    console.log("munka:", 'kapcsolati adatok tárolása');
+    console.groupEnd();
+  },[contactData]);
+
+  useEffect(() => {
+    console.group("residenceData");
+    console.log("residenceData:", residenceData);
+    console.log("felhasználás:", 'sok helyen');
+    console.log("munka:", 'lakcim adatok tárolása');
+    console.groupEnd();
+  },[residenceData]);
+
+  useEffect(() => {
+    console.group("vehicleCategory");
+    console.log("vehicleCategory:", vehicleCategory);
+    console.log("felhasználás:", 'sok helyen');
+    console.log("munka:", 'jogsi kategóriák');
+    console.groupEnd();
+  },[vehicleCategory]);
+
+   useEffect(() => {
+    console.group("driveCategory");
+    console.log("driveCategory:", driveCategory);
+    console.log("felhasználás:", 'sok helyen');
+    console.log("munka:", 'jogsi kategóriák');
+    console.groupEnd();
+  },[driveCategory]);
+
+  useEffect(() => {
+    console.group("physicalState");
+    console.log("physicalState:", physicalState);
+    console.log("felhasználás:", 'datapage');
+    console.log("munka:", 'szerverről jövő skillekből a fizikai állapotokat mentjük bele');
+    console.groupEnd();
+  },[physicalState]);
+  
   useEffect(() => {
     console.group("updatedSkill");
     console.log("updatedSkill:", updatedSkill);

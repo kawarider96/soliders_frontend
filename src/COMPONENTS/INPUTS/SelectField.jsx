@@ -18,7 +18,7 @@ export function SelectField({fullList, paginationData, inputValue, setInputValue
 
   const getColumnData = () => {
     dispatch(setLoadingMode(true));
-    getColumnDatas('uniqueValues', query);
+    getColumnDatas('uniqueValues', {table:'company', column:'teljes_nev'});
     setCollapse(true);
   }
 

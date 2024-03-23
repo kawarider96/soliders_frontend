@@ -37,7 +37,12 @@ export function FilterMenu({id}) {
 
   return (
     <Box >
-      <IconButton
+     
+    </Box>
+  );
+}
+
+/* <IconButton
         id="basic-button"
         onClick={handleClick}
       >
@@ -69,7 +74,4 @@ export function FilterMenu({id}) {
         </MenuItem>
         )) : ''}
         
-      </Menu>
-    </Box>
-  );
-}
+      </Menu>*/

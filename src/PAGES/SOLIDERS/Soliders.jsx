@@ -23,7 +23,7 @@ const Title = ({title}) => {
 const Search = () => {
     return (
     <Box sx={{padding:'10px'}}>
-        <SearchField fullList/>
+        <SearchField/>
     </Box>
     )
 };
@@ -44,16 +44,40 @@ const Header = ({columnData}) => {
 
 const DataGrid = ({soliders, columnData}) => {
     const selectedSoliders = useSelector(state => state.soliders.selectedSoliders);
+    const selectedSolider = useSelector(state => state.datapage.selectedSolider);
+    const shootingSkills = useSelector(state => state.datapage.shootingSkills);
+    const missionSkills = useSelector(state => state.datapage.missionSkills);
+    const courseSkills = useSelector(state => state.datapage.courseSkills);
+    const qualificationSkills = useSelector(state => state.datapage.qualificationSkills);
+    const contactData = useSelector(state => state.datapage.contactData);
+    const residenceData = useSelector(state => state.datapage.residenceData);
+    const vehicleCategory = useSelector(state => state.datapage.vehicleCategory);
+    const driveCategory = useSelector(state => state.datapage.driveCategory);
+    const physicalState = useSelector(state => state.datapage.physicalState);
     const {handleCheckboxChange} = useSoliderPageFunctions();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {getSelectedSolider, getSkills} = useAxiosFunctions();
 
     const navigateDataPage = (sztsz) => {
-        dispatch(setLoadingMode(true));
         getSkills(`skills?sztsz=${sztsz}`)
-        getSelectedSolider(`getsolider?id=${sztsz}`);
+        getSelectedSolider(`getsolider?sztsz=${sztsz}`);
+        
+        if (selectedSolider.graduate && 
+            selectedSolider.personal && 
+            selectedSolider.vehicle && 
+            selectedSolider.work && 
+            shootingSkills && 
+            missionSkills && 
+            courseSkills && 
+            qualificationSkills && 
+            contactData &&
+            residenceData &&
+            vehicleCategory &&
+            driveCategory &&
+            physicalState) {
         navigate('/data');
+        }
     };
 
     return (
@@ -73,8 +97,8 @@ const DataGrid = ({soliders, columnData}) => {
                 <Chip 
                 variant="contained" 
                 sx={{width:'100px'}}
-                color={item.active === 1 ? 'success' : 'error'}
-                label={item.active === 1 ? 'aktív' : 'leszerelt'}>
+                color={item.jogiviszony_statusz === 'aktív' ? 'success' : 'error'}
+                label={item.jogiviszony_statusz}>
                 </Chip>
             </Box>
             <Button onClick={() => navigateDataPage(item.sztsz)}>{item[columnData[1].column]}</Button>
@@ -103,14 +127,22 @@ export function Soliders() {
     const paginationData = useSelector(state => state.pagination);
     const filterData = useSelector(state => state.soliders.filterData);
     const {getSoliders} = useAxiosFunctions();
+    const [company, setCompany] = useState('');
 
     useEffect(() => {
         getSoliders(`filter?page=${paginationData.currentPage}`, filterData);
       }, [paginationData.currentPage]);
 
+      useEffect(() => {
+        setCompany({
+          ezred: localStorage.getItem('ezred_hosszu'),
+          zaszloalj: localStorage.getItem('zaszloalj_hosszu'),
+        });
+      }, []);
+
     return (
     <Box sx={{display:'grid', gridTemplateRows:'8% 12% 10% 60% 10%', position:'relative', textAlign:'center', height:'100vh', overflow:'auto'}}>
-        <Title title={'52. TERÜLETVÉDELMI ZÁSZLÓALJ'}/>
+        <Title title={`${company.ezred} ${company.zaszloalj}`}/>
         <Search/>
         <Header columnData={columnData}/>
         <DataGrid soliders={soliders} selectedSoliders={selectedSoliders} columnData={columnData}/>

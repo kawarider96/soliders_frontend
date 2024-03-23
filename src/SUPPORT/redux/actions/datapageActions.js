@@ -7,11 +7,16 @@ export const SET_SHOOTING_SKILLS = 'SET_SHOOTING_SKILLS';
 export const SET_MISSION_SKILLS = 'SET_MISSION_SKILS';
 export const SET_COURSE_SKILLS = 'SET_COURSE_SKILLS';
 export const SET_QUALIFICATION_SKILLS = 'SET_QUALIFICATION_SKILLS';
+export const SET_CONTACT_DATA = 'SET_CONTACT_DATA';
+export const SET_VEHICLE_CATEGORY = 'SET_VEHICLE_CATEGORY';
+export const SET_PHYSICAL_STATE = 'SET_PHYSICAL_STATE';
+export const SET_RESIDENCE_DATA = 'SET_RESIDENCE_DATA';
 export const SET_UPDATED_SKILL = 'SET_UPDATED_SKILL';
 export const SET_NEW_SKILL = 'SET_NEW_SKILL';
 export const SET_SELECTED_SOLIDER = 'SET_SELECTED_SOLIDER';
 export const UPDATE_SKILL_DATA = 'UPDATE_SKILL_DATA';
 export const UPDATE_NEW_SKILL = 'UPDATE_NEW_SKILL';
+export const SET_DRIVE_CATEGORY = 'SET_DRIVE_CATEGORY';
 
 //TODO: KIVÁLASZOTT KATONA ADATAI PÉLDÁUL A DATAPAGEHEZ
 export const setSelectedSolider = (selectedSolider) => ({
@@ -95,6 +100,36 @@ export const updateWorkData = (fieldName, value) => {
   export const setQualificationSkills = (qualificationSkills) => ({
     type: SET_QUALIFICATION_SKILLS,
     payload: qualificationSkills,
+  });
+
+  //TODO: KAPCSOLATOK
+  export const setContactData = (contactData) => ({
+    type: SET_CONTACT_DATA,
+    payload: contactData,
+  });
+
+  //TODO: LAKCIMEK
+  export const setResidenceData = (residenceData) => ({
+    type: SET_RESIDENCE_DATA,
+    payload: residenceData,
+  });
+
+  //TODO: TIPUSISMERET KATEGÓRIÁK
+  export const setVehicleCategory = (vehicleCategory) => ({
+    type: SET_VEHICLE_CATEGORY,
+    payload: vehicleCategory,
+  });
+
+  //TODO: JÁRMŰ KATEGORIAK
+  export const setDriveCategory = (driveCategory) => ({
+    type: SET_DRIVE_CATEGORY,
+    payload: driveCategory,
+  });
+
+  //TODO: FIZIKAI FELMÉRÉSEK
+  export const setPhysicalState = (physicalState) => ({
+    type: SET_PHYSICAL_STATE,
+    payload: physicalState,
   });
   
   //TODO: FRISSÍTETT SKILL ADAT AMIT A SZERVERRE KÜLDÜNK

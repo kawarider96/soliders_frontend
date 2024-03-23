@@ -6,84 +6,55 @@ import { updateWorkData } from "../redux/actions/datapageActions";
 import { updateSkillData } from "../redux/actions/datapageActions";
 import { useEffect } from "react";
 
-//first data dialog skill module datas //
-export const places = ['52.TVZ','ADAPTÍV HUSZÁR','MOONSTAR','EMELT SZINTŰ LÖVÉSZ'];
-export const skillNames = ['alap lőgyakorlat','szakalap lőgyakorlat','1.sz. lőgyakorlat','2.sz. lőgyakorlat','3.sz. lőgyakorlat','4.sz. lőgyakorlat','békeműveleti lőgyakorlat', 'gránátdobás','robbantás'];
-export const results = ['megfelelt','jó','kiváló'];
-export const weapons = ['','AK 63D','P9 RC','CZ BREN','CZ P9','PKM','támadó gránát','védekező gránát','gyakorló gránát'];
-export const types = ['lövészet', 'misszió', 'tanfolyam', 'szakképesítés'];
-export const missionPlaces = ['Koszovó', 'Irak', 'Bosznia'];
-export const missionNames = ['KFOR', 'IKBK', 'EUFOR'];
-export const trainingNames = ['vezénylőzászlósi tanfolyam', 'STANAG 2.2.2 nyelvtanfolyam', 'tereptan','FOSZAB','őrkiképzés','gránátdobás','robbantás'];
-export const posts = ['századparancsnok', 'vezénylőzászlós', 'sofőr', 'mesterlövész'];
-
 //KATONÁK ADATAINAK OSZLOP VÁLASZTÓJA a katonák lapon
 export const workColumns = [
-    {label:'pozíció', table:null, column:'position'},
-    {label:'sztsz', table:null, column:'sztsz'},
-    {label:'teljes név', table:null, column:'fullname'},
-    {label:'tudományos fokozat', table:null, column:'science_level'},
-    {label:'vezetéknév', table:null, column:'firstname'},
-    {label:'keresztnév', table:null, column:'lastname'},
-    {label:'név 2', table:null, column:'name2'},
-    {label:'név 3', table:null, column:'name3'},
-    {label:'viselt rendfokozat', table:null, column:'actual_rank'},
-    {label:'szerződés kezdete', table:null, column:'serve_start'},
-    {label:'szerződés lejárta', table:null, column:'serve_end'},
-    {label:'szolg. igazolvány', table:null, column:'serve_id'},
-    {label:'leszerelési parancs', table:null, column:'deactivate_number'},
-    {label:'állománykategória', table:null, column:'type'},
-    {label:'státusz', table:null, column:'active'},
+    {label:'rendf rövid', table:'work', column:'viselt_rendfokozat_rovid'},
+    {label:'rendf hosszú', table:'work', column:'viselt_rendfokozat_hosszu'},
+    {label:'szolg idő kezdete', table:'work', column:'szolgido_kezdete'},
+    {label:'szolg idő vége', table:'work', column:'szolgido_vege'},
+    {label:'szolg igazolvány', table:'work', column:'szolg_igazolvany'},
+    {label:'profilkép', table:'work', column:'profilkep'},
 ];
 
 export const personalColumns = [
-     {label:'szül idő', table:'personaldata', column:'birth_date'},
-     {label:'szül hely', table:'personaldata', column:'birth_place'},
-     {label:'szül név', table:'personaldata', column:'birth_name'},
-     {label:'anyja neve', table:'personaldata', column:'mother_name'},
-     {label:'nem', table:'personaldata', column:'sex'},
-     {label:'kor', table:'personaldata', column:'age'},
-     {label:'személyi szám', table:'personaldata', column:'personal_id'},
-     {label:'személyi igazolvány', table:'personaldata', column:'personal_card_id'},
-     {label:'személyi ig. érvényessége', table:'personaldata', column:'personal_card_end'},
-     {label:'tajszám', table:'personaldata', column:'taj'},
-     {label:'adószám', table:'personaldata', column:'tax'},
-     {label:'jogosítvány', table:'personaldata', column:'drive_licence'},
+     {label:'teljes név', table:'personal', column:'teljes_nev'},
+     {label:'tudományos fokozat', table:'personal', column:'tudomanyos_fokozat'},
+     {label:'vezetéknév', table:'personal', column:'vezeteknev'},
+     {label:'keresztnév', table:'personal', column:'keresztnev'},
+     {label:'név 3', table:'personal', column:'nev_3'},
+     {label:'név 4', table:'personal', column:'nev_4'},
+     {label:'születési idő', table:'personal', column:'szul_ido'},
+     {label:'születési hely', table:'personal', column:'szul_hely'},
+     {label:'születési név', table:'personal', column:'szul_nev'},
+     {label:'anyja neve', table:'personal', column:'anyja_neve'},
+     {label:'nem', table:'personal', column:'nem'},
+     {label:'kor', table:'personal', column:'kor'},
+     {label:'személyi szám', table:'personal', column:'szemelyi_szam'},
+     {label:'szem ig szám', table:'personal', column:'szemelyi_igazolvany_szam'},
+     {label:'adószám', table:'personal', column:'adoszam'},
+     {label:'tajszám', table:'personal', column:'taj'},
+     {label:'jogosítvány', table:'personal', column:'jogositvany_kategoria'},
 ];
 
 export const graduateColumns = [
-    {label:'végzettség', table:'graduatedata', column:'graduate'},
-    {label:'katonai végzettség', table:'graduatedata', column:'military_graduate'},
-    {label:'kiképzettség', table:'graduatedata', column:'modul'},
-    {label:'kiképzettség dátuma', table:'graduatedata', column:'trained_date'},
-    {label:'kiképzettség igazolása', table:'graduatedata', column:'nyt_number'},
-    {label:'tiszti/altiszti tanfolyam I.', table:'graduatedata', column:'sergeant_1'},
-    {label:'tiszti/altiszti tanfolyam II.', table:'graduatedata', column:'sergeant_2'},
+    {label:'végzettség foka', table:'graduate', column:'vegzettseg_foka'},
+    {label:'alapfelkészítes foka', table:'graduate', column:'alapfelkeszites_foka'},
+    {label:'alapfelkészítés ideje', table:'graduate', column:'alapfelkeszites_ideje'},
+    {label:'alapfelkészítés igazolása', table:'graduate', column:'alapfelkeszites_igazolas_szama'},
 ];
 
-export const contactColumns = [
-    {label:'irányítószám', table:'contact', column:'zipcode'},
-    {label:'város', table:'contact', column:'city'},
-    {label:'utcanév', table:'contact', column:'street'},
-    {label:'közterület jellege', table:'contact', column:'street_type'},
-    {label:'házszám', table:'contact', column:'house_number'},
-    {label:'irányítószám tarthely', table:'contact', column:'zipcode2'},
-    {label:'város tarthely', table:'contact', column:'city2'},
-    {label:'utcanév tarthely', table:'contact', column:'street2'},
-    {label:'közterület jellege tarthely', table:'contact', column:'street_type2'},
-    {label:'házszám tarthely', table:'contact', column:'house_number2'},
-    {label:'telefon', table:'contact', column:'phone'},
-    {label:'email', table:'contact', column:'email'},
-];
 export const baseColumns = [
-    {label:'rendszeresített rendfokozat', table:'basedata', column:'base_rank'},
-    {label:'járási század', table:'basedata', column:'squad'},
-    {label:'járási város', table:'basedata', column:'squad_city'},
-    {label:'szakasz', table:'basedata', column:'platoon'},
-    {label:'raj', table:'basedata', column:'team'},
-    {label:'beosztás', table:'basedata', column:'post'},
-    {label:'mak kód', table:'basedata', column:'mak'},
-    {label:'fizetési fokozat', table:'basedata', column:'post_type'},
+    {label:'ezred', table:null, column:'ezred_rovid'},
+    {label:'zaszloalj', table:null, column:'zaszloalj_rovid'},
+    {label:'megye', table:null, column:'megye'},
+    {label:'részleg', table:null, column:'reszleg'},
+    {label:'beosztás', table:null, column:'pozicio_nev'},
+    {label:'pozíciószám', table:null, column:'pozicio'},
+    {label:'rendsz rendfokozat', table:null, column:'maximum_rendfokozat_rovid'},
+    {label:'jogviszony fajta', table:null, column:'jogivszony_tipus'},
+    {label:'jogviszony típus', table:null, column:'jogviszony_altipus'},
+    {label:'állomány kategória', table:null, column:'allomany_kategoria'},
+    {label:'jogviszony státusz', table:null, column:'jogivszony_statusz'},
 ];
 
 export function useDataSource() {
@@ -118,19 +89,8 @@ export function useDataSource() {
         const { name, value } = event.target;
         dispatch(updateSkillData(name, value));
     };
-
-    const solider = [
-        {value:selectedSolider.fullname || '', label:'név'},
-        {value:selectedSolider.type || '', label:'állomány'},
-        {value:selectedSolider.actual_rank || '', label:'rendfokozat'},
-        {value:selectedSolider.sztsz || '', label:'sztsz'},
-        {value:selectedSolider.position || '', label:'pozíció'},
-        {value:selectedSolider.serve_start || '', label:'jogviszony kezdete'},
-        {value:selectedSolider.basedata.post || '', label:'beosztás'},
-        {value:selectedSolider.graduatedata.modul || '', label:'kiképzettség'},
-    ];
     
-    const soliderData = [
+    /*const soliderData = [
         {
         dialogName: 'workdata', 
         label:'MUNKAHELYI ADATOK', 
@@ -223,7 +183,7 @@ export function useDataSource() {
         image:'school_solider.png',
         items:qualificationSkills
         },
-    ];
+    ];*/
 
-    return {solider, soliderData, updateSkill, updateContact, updateGraduate, updatePersonal, updateWork }
+    return { updateSkill, updateContact, updateGraduate, updatePersonal, updateWork }
 }

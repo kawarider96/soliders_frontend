@@ -1,7 +1,7 @@
 import * as React from 'react';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { IconButton, Menu, MenuItem, Box, Button, Divider, Typography } from '@mui/material';
-import { workColumns, personalColumns, graduateColumns, contactColumns, baseColumns } from '../../SUPPORT/DATA/MotherDataSource';
+import { workColumns, personalColumns, graduateColumns, baseColumns } from '../../SUPPORT/DATA/MotherDataSource';
 import { useDispatch } from 'react-redux';
 import { setColumnData } from '../../SUPPORT/redux/actions/soliderspageActions';
 import WorkIcon from '@mui/icons-material/Work';
@@ -83,23 +83,7 @@ export function ColumnMenu({id}) {
         <Divider sx={{ my: 0.5 }} />
         <Box sx={{position:'sticky', top:0, backgroundColor:'#081c16', zIndex:10, display:'flex', justifyContent:'center', width:'100%', gap:'5px', padding:'5px', color:'white'}}>
             <WorkIcon/>
-            <Typography variant='button'>Kapcsolati adatok</Typography>
-        </Box>
-        <Divider sx={{ my: 0.5 }} />
-
-        {contactColumns ? contactColumns.map((column, index) => (
-        <MenuItem key={index} onClick={() => {
-          dispatch(setColumnData(id, column.label, column.table, column.column));
-            handleClose();
-          }}>
-            {column.label}
-        </MenuItem>
-        )) : ''}
-
-        <Divider sx={{ my: 0.5 }} />
-        <Box sx={{position:'sticky', top:0, backgroundColor:'#081c16', zIndex:10, display:'flex', justifyContent:'center', width:'100%', gap:'5px', padding:'5px', color:'white'}}>
-            <WorkIcon/>
-            <Typography variant='button'>Beosztási adatok</Typography>
+            <Typography variant='button'>Céges adatok</Typography>
         </Box>
         <Divider sx={{ my: 0.5 }} />
 
